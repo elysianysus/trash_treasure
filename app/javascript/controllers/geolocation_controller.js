@@ -53,7 +53,7 @@ export default class extends Controller {
     this.map.on('click', e => {
       if (this.currentUserLocation) {
         const distance = this.calculateDistance(this.currentUserLocation, e.lngLat);
-        if (distance <= 20) {
+        if (distance <= 100) {
           this.setCoordinatesAndFetchAddress(e.lngLat);
 
           if (this.userMarker === null) {

@@ -18,7 +18,7 @@ export default class extends Controller {
     this.map = new mapboxgl.Map({
       container: this.element,
       style: "mapbox://styles/mapbox/streets-v10",
-      center: [139.7671, 35.6812],
+      center: [114.1772, 22.3027],//chang centre to HK
       zoom: 13,
     });
 
@@ -79,33 +79,6 @@ export default class extends Controller {
         this.renderDirection(this.position, coordinates);
       });
 
-      // Set a timeout to display the custom alert after 10 seconds (adjust the time as needed)
-      setTimeout(() => {
-        Swal.fire({
-          title: 'You have arrived!',
-          html: '<p>You toss away your trash! 🥳</p><p>You have earned your first badge!</p>',
-          imageUrl: 'https://raw.githubusercontent.com/msam4/trash_treasure/1162c51a3db196942ac4edeb3d22b8373de1c592/app/assets/images/badges/first-toss.png',
-          imageWidth: 100,
-          imageHeight: 100,
-          imageAlt: 'First toss',
-          confirmButtonText: 'OK',
-          customClass: {
-            confirmButton: 'btn btn-flat-primary m-3 p-4 text-center btn-md', // Apply Bootstrap classes directly to the button
-          },
-
-          didOpen: () => {
-            const confirmButton = Swal.getConfirmButton();
-            confirmButton.style.backgroundColor = '#618264';
-            confirmButton.style.color = '#fff';
-            confirmButton.style.borderRadius = '50px';
-            confirmButton.style.padding = '15px 30px';
-          },
-        }).then((result) => {
-          if (result.isConfirmed) {
-            window.location.href = '/';
-          }
-        });
-      }, 15000);
 
       new mapboxgl.Marker(customMarker)
         .setLngLat(coordinates)
